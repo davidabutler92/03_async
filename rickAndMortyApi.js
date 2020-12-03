@@ -13,16 +13,12 @@ const getCharacter = (id) => {
     });
 }
 
-const getManyCharacters = (id) => {
-    return fetch(`${URL}/${id}`)
-    .then(res => res.json())
-    .then(({ name, status, species }) => {
-        return { 
-            name, 
-            status, 
-            species }
-    });
+const getManyCharacters = ids=> {
+    return Promise.all(ids.map(id => getCharacter(id)));
 }
+
+
+
 
 module.exports = {
     getCharacter,
