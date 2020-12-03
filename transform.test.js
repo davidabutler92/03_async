@@ -4,7 +4,6 @@ const fs = require('fs').promises
 
 
 describe('transform', () => {
-
     // it('should reverse a string', () => {
     //     const result = reverseToUpper('hello');
     //     expect(result).toEqual('OLLEH');
@@ -15,6 +14,13 @@ describe('transform', () => {
     //     expect(result).toEqual('ello');
     // })
     //should remove capital letters, make all letters capital then reverse the string
+    
+    beforeAll(() => {
+        return Promise.all([
+            fs.writeFile('./transform.txt', 'Hello')
+        ]);
+    });
+
     it('should remove capital letters, make all letters capital then reverse the string', () => {
         return transform('./transform.txt')
             .then(() => {
